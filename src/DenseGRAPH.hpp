@@ -4,6 +4,8 @@
 #include <vector>
 #include "Edge.hpp"
 
+namespace graph_algo {
+
 class DenseGRAPH { 
 private:
 	std::vector <std::vector <bool> > adj;
@@ -64,5 +66,7 @@ public:
 
 	bool end() { return i >= G.V(); }
 };
+
+}	// namespace
 
 #endif

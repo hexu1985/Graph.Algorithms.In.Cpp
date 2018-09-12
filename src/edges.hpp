@@ -3,6 +3,8 @@
 
 #include "Edge.hpp"
 
+namespace graph_algo {
+
 template <class Graph> 
 std::vector<Edge> edges(Graph &G)
 { 
@@ -16,5 +18,7 @@ std::vector<Edge> edges(Graph &G)
 	}
 	return a;
 }
+
+}	// namespace
 
 #endif

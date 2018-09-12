@@ -3,9 +3,10 @@
 #include "DenseGRAPH.hpp"
 #include "IO.hpp"
 
-using GRAPH = DenseGRAPH;
-
 using namespace std;
+using namespace graph_algo;
+
+using GRAPH = DenseGRAPH;
 
 int main(int argc, char *argv[])
 { 

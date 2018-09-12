@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+namespace graph_algo {
+
 template <class Graph> 
 class IO {
 public:
@@ -32,5 +34,7 @@ void IO<Graph>::scanEZ(Graph &G)
 		if (v < G.V() && w < G.V())
 			G.insert(Edge(v, w));
 }
+
+}	// namespace 
 
 #endif
