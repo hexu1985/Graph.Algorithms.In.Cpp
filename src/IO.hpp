@@ -24,4 +24,13 @@ void IO<Graph>::show(const Graph &G)
 	}
 }
 
+template <class Graph>
+void IO<Graph>::scanEZ(Graph &G)
+{
+	int v, w;
+	while (std::cin >> v >> w)
+		if (v < G.V() && w < G.V())
+			G.insert(Edge(v, w));
+}
+
 #endif

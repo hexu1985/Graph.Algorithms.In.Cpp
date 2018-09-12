@@ -2,12 +2,13 @@
 #define GRAPH_ALGO_DENSEGRAPH_HPP
 
 #include <vector>
+#include "Edge.hpp"
 
 class DenseGRAPH { 
 private:
+	std::vector <std::vector <bool> > adj;
 	int Vcnt, Ecnt; 
 	bool digraph;
-	std::vector <vector <bool> > adj;
 
 public:
 	DenseGRAPH(int V, bool digraph = false) :
@@ -46,7 +47,7 @@ public:
 class DenseGRAPH::adjIterator { 
 private:
 	const DenseGRAPH &G;
-	int i, v;
+	int v, i;
 
 public:
 	adjIterator(const DenseGRAPH &G, int v) : 
