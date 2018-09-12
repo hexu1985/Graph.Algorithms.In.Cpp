@@ -1,7 +1,7 @@
-#ifndef GRAPH_ALGO_EDGES_H
-#define GRAPH_ALGO_EDGES_H
+#ifndef GRAPH_ALGO_EDGES_HPP
+#define GRAPH_ALGO_EDGES_HPP
 
-namespace Hx {
+#include "Edge.hpp"
 
 template <class Graph> 
 std::vector<Edge> edges(Graph &G)
@@ -16,7 +16,5 @@ std::vector<Edge> edges(Graph &G)
 	}
 	return a;
 }
-
-}	// namespace
 
 #endif
