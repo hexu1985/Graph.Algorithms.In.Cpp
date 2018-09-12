@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 	GRAPH G(V);
 	IO<GRAPH>::scanEZ(G);
 	if (V < 20) IO<GRAPH>::show(G);
-	cout << G.E() << " edges ";
+	cout << G.E() << " edges " << endl;
 
 	return 0;
 }
