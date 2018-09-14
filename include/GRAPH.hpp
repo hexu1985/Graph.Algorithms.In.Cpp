@@ -5,6 +5,7 @@ public:
 	GRAPH(int, bool);
 	~GRAPH();
 
+	void expand(int v);
 	int V() const;
 	int E() const;
 	bool directed() const;
