@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <stdlib.h>
 
 #ifdef USE_DENSE_GRAPH
@@ -9,6 +10,7 @@
 
 #include "IO.hpp"
 #include "JsonFileIO.hpp"
+#include "DEGREE.hpp"
 
 using namespace std;
 using namespace graph_algo;
@@ -27,8 +29,22 @@ int main(int argc, char *argv[])
 	}
 
 	auto G = JsonFileIO<GRAPH>::loadEZ(argv[1]);
-	if (G->V() < 20) IO<GRAPH>::show(*G);
-	cout << G->E() << " edges " << endl;
+	cout << "============== graph show ==============\n";
+	IO<GRAPH>::show(*G);
+	cout << endl;
+
+	cout << "total edges: " << G->E() << endl;
+
+	DEGREE<GRAPH> dgree(*G);
+	cout << "\n============== graph dgree ==============\n";
+	int total_degrees = 0;
+	for (int s = 0; s < G->V(); s++) {
+		cout << setw(2) << s << ":" << setw(2) << dgree[s] << "\n";
+		total_degrees += dgree[s];
+	}
+	cout << endl;
+
+	cout << "total degrees: " << total_degrees << endl;
 
 	return 0;
 }

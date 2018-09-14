@@ -1,6 +1,7 @@
 #ifndef GRAPH_ALGO_JSONFILEIO_HPP
 #define GRAPH_ALGO_JSONFILEIO_HPP
 
+#include <fstream>
 #include "JsonIO.hpp"
 
 namespace graph_algo {
