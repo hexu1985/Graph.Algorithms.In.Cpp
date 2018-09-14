@@ -8,7 +8,8 @@
 #include "SparseMultiGRAPH.hpp"
 #endif
 
-#include "FileIO.hpp"
+#include "IO.hpp"
+#include "JsonFileIO.hpp"
 
 using namespace std;
 using namespace graph_algo;
@@ -26,7 +27,7 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
-	auto G = FileIO<GRAPH>::loadEZ(argv[1]);
+	auto G = JsonFileIO<GRAPH>::loadEZ(argv[1]);
 	if (G->V() < 20) IO<GRAPH>::show(*G);
 	cout << G->E() << " edges " << endl;
 

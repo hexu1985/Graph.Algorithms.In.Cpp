@@ -1,6 +1,7 @@
 #ifndef GRAPH_ALGO_FILEIO_HPP
 #define GRAPH_ALGO_FILEIO_HPP
 
+#include <stdexcept>
 #include <memory>
 #include <fstream>
 #include "IO.hpp"
@@ -18,7 +19,7 @@ std::shared_ptr<Graph> FileIO<Graph>::loadEZ(const char *file_path, bool digraph
 {
 	std::ifstream ifile(file_path);
 	if (!ifile) {
-		return nullptr;
+		throw std::runtime_error(std::string("FileIO<Graph>::loadEZ file: \"")+file_path+"\" failed");
 	}
 
 	int V; 
