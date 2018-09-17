@@ -2,9 +2,9 @@
 RM = rm -f
 CXX = g++
 CXXFLAGS = -Wall -g -std=c++11 -DUSE_DENSE_GRAPH
-INCLUDES = -I../src
-LDFLAGS =
-LDPATH =
+INCLUDES = -I../include
+LDFLAGS = -lgraph_algo
+LDPATH = -L../src
 
 SOURCES = $(shell ls *.cpp)
 PROGS = $(SOURCES:%.cpp=%)
@@ -16,4 +16,4 @@ clean:
 	$(RM) $(PROGS)
 
 %: %.cpp
-	$(CXX) -o $@ $(CXXFLAGS) $(INCLUDES) ../src/json11/json11.cpp $^ $(LDFLAGS) $(LDPATH)
+	$(CXX) -o $@ $(CXXFLAGS) $(INCLUDES) $^ $(LDFLAGS) $(LDPATH)

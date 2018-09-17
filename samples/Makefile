@@ -2,7 +2,7 @@
 RM = rm -f
 CXX = g++
 CXXFLAGS = -Wall -g -std=c++11 -DUSE_DENSE_GRAPH
-INCLUDES = -I../src
+INCLUDES = -I../include
 LDFLAGS =
 LDPATH =
 
