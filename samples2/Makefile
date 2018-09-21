@@ -1,10 +1,10 @@
 
 RM = rm -f
 CXX = g++
-CXXFLAGS = -Wall -g -std=c++11 -DUSE_DENSE_GRAPH
+CXXFLAGS = -Wall -g -std=c++11 #-DUSE_DENSE_GRAPH
 INCLUDES = -I../include
 LDFLAGS = -lgraph_algo
-LDPATH = -L../src
+LDPATH = -L../src -L../lib
 
 SOURCES = $(shell ls *.cpp)
 PROGS = $(SOURCES:%.cpp=%)

@@ -19,10 +19,27 @@ private:
 	int Vcnt, Ecnt; 
 	bool digraph;
 
+private:
+	static link clone_from_list(link x)
+	{
+		link head = nullptr;
+		link tail = nullptr;
+		for ( ; x != nullptr; x = x->next) {
+			link y = new node(x->v, nullptr);
+			if (head == nullptr)	// list is empty
+				head = y;
+			else 		// insert to tail
+				tail->next = y;
+			tail = y;
+		}
+		return head;
+	}
+
 	static link remove_from_list(link &head, int v)
 	{
 		if (head == nullptr)	// list is empty
 			return nullptr;
+
 		link x = head;
 		if (x->v == v) {	// found at head
 			head = x->next;
@@ -50,6 +67,26 @@ public:
 		adj(V), Vcnt(V), Ecnt(0), digraph(digraph) 
 	{ 
 		adj.assign(V, 0); 
+	}
+
+	SparseMultiGRAPH(const SparseMultiGRAPH &G) :
+		adj(G.Vcnt), Vcnt(G.Vcnt), Ecnt(G.Ecnt), digraph(G.digraph)
+	{
+		for (size_t i = 0; i < adj.size(); i++) {
+			adj[i] = clone_from_list(G.adj[i]);
+		}
+	}
+
+	~SparseMultiGRAPH()
+	{
+		link y;
+		for (link x: adj) {
+			while (x != nullptr) {
+				y = x->next;
+				delete x;
+				x = y;
+			}
+		}
 	}
 
 	int V() const { return Vcnt; }
