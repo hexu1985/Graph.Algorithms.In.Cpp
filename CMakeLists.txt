@@ -14,5 +14,5 @@ link_directories(
 
 #set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 add_subdirectory(src)
-add_subdirectory(samples)
-add_subdirectory(samples2)
+add_subdirectory(chap01)
+add_subdirectory(chap01_2)
