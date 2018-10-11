@@ -27,6 +27,7 @@ public:
 
     int count() const { return cnt; }
     int operator [](int v) const { return ord[v]; }
+    const std::vector<int> &ord_array() const { return ord; }
 };
 
 }	// namespace
