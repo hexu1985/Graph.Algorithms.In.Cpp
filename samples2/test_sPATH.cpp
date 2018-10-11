@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 		cout << "$ " << endl;
 		int v, w;
 		cin >> v >> w;
-		if (v < 0 || w < 0)
+		if (v < 0 || w < 0 || !cin)
 			break;
 		if (v >= G->V() || w >= G->V()) {
 			cout << "invalid vertex\n";

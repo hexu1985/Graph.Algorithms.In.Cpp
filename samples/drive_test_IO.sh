@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-./graph_io 10 <<EOF
+./test_IO 10 <<EOF
 3 7
 1 4
 7 8
