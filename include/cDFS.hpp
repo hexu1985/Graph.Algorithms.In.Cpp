@@ -8,8 +8,8 @@ namespace graph_algo {
 template <class Graph> 
 class cDFS { 
 private:
-    int cnt = 0;
     const Graph &G;
+    int cnt = 0;
     std::vector<int> ord; 
 
     void searchC(int v)
