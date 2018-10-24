@@ -16,3 +16,4 @@ link_directories(
 add_subdirectory(src)
 add_subdirectory(chap01)
 add_subdirectory(chap01_2)
+add_subdirectory(chap02)

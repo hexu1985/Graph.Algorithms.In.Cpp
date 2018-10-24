@@ -23,7 +23,9 @@ public:
     { this->search(); } 
 
     int ST(int v) const { return st[v]; }
-    const std::vector<int> &ST_array() const { return st; }
+
+    template <class T>
+    friend const std::vector<int> &get_st(const T &t);
 };
 
 }	// namespace

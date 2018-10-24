@@ -9,7 +9,8 @@
 #include "IO.hpp"
 #include "JsonFileIO.hpp"
 #include "DFS_trace.hpp"
-#include "inverseMap.hpp"
+#include "get_st.hpp"
+#include "get_ord.hpp"
 
 using namespace std;
 using namespace graph_algo;
@@ -41,13 +42,13 @@ int main(int argc, char *argv[])
     for (int i = 0; i < G->V(); i++) cout << "---";
     cout << '\n';
 
-    auto ord = dfs.ord_array();
+    auto ord = get_ord(dfs);
     assert(ord.size() == G->V());
     cout << "ord |";
     for (int i = 0; i < G->V(); i++) cout << ' ' << setw(2) << ord[i];
     cout << '\n';
 
-    auto st = dfs.ST_array();
+    auto st = get_st(dfs);
     assert(st.size() == G->V());
     cout << "st  |";
     for (int i = 0; i < G->V(); i++) cout << ' ' << setw(2) << st[i];

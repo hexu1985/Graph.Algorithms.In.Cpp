@@ -26,7 +26,9 @@ public:
         ord(G.V(), -1) { }
 
     int operator[](int v) const { return ord[v]; }
-    const std::vector<int> &ord_array() const { return ord; }
+
+    template <class T>
+    friend const std::vector<int> &get_ord(const T &t);
 };
 
 }	// namespace

@@ -13,6 +13,7 @@
 #include "IO.hpp"
 #include "JsonFileIO.hpp"
 #include "cDFS.hpp"
+#include "get_ord.hpp"
 #include "inverseMap.hpp"
 
 using namespace std;
@@ -52,7 +53,7 @@ int main(int argc, char *argv[])
 
         cDFS<GRAPH> dfs(*G, v);
 		cout << "\nvisit sequence of dfs begin with vertex " << v << ": " << endl;
-        auto vec = inverseMap(dfs.ord_array());
+        auto vec = inverseMap(get_ord(dfs));
         copy(vec.begin(), vec.end(), ostream_iterator<int>(cout, ", "));
         cout << "\n";
 	}
