@@ -13,9 +13,8 @@
 
 #include "IO.hpp"
 #include "JsonFileIO.hpp"
-#include "DFS_trace.hpp"
-#include "get_st.hpp"
-#include "get_ord.hpp"
+#include "CC.hpp"
+#include "get_id.hpp"
 
 using namespace std;
 using namespace graph_algo;
@@ -38,11 +37,12 @@ int main(int argc, char *argv[])
 	IO<GRAPH>::show(*G);
 	cout << endl;
 
-	cout << "total edges: " << G->E() << endl;
+	cout << G->E() << " edges ";
 
-	cout << "\nDepth-first search test\n";
-    DFS<GRAPH> dfs(*G);
+	CC<GRAPH> Gcc(*G);
+	cout << Gcc.count() << " components" << endl;
 
+	cout << "\n\n";
     cout << "    |";
     for (int i = 0; i < G->V(); i++) cout << ' ' << setw(2) << i;
     cout << '\n';
@@ -51,16 +51,10 @@ int main(int argc, char *argv[])
     for (int i = 0; i < G->V(); i++) cout << "---";
     cout << '\n';
 
-    auto ord = get_ord(dfs);
-    assert(ord.size() == G->V());
-    cout << "ord |";
-    for (int i = 0; i < G->V(); i++) cout << ' ' << setw(2) << ord[i];
-    cout << '\n';
-
-    auto st = get_st(dfs);
-    assert(st.size() == G->V());
-    cout << "st  |";
-    for (int i = 0; i < G->V(); i++) cout << ' ' << setw(2) << st[i];
+    auto id = get_id(Gcc);
+    assert(id.size() == G->V());
+    cout << "id  |";
+    for (int i = 0; i < G->V(); i++) cout << ' ' << setw(2) << id[i];
     cout << '\n';
 
     cout << endl;
