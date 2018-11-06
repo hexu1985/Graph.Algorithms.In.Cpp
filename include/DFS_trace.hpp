@@ -18,9 +18,10 @@ class DFS: public SEARCH<Graph> {
         std::cout << std::string(depth, '\t') << e.v << '-' << e.w << " tree\n";
         depth++;
         typename Graph::adjIterator A(this->G, w);
-        for (int t = A.beg(); !A.end(); t = A.nxt()) 
+        for (int t = A.beg(); !A.end(); t = A.nxt()) {
             if (this->ord[t] == -1) searchC(Edge(w, t));
-            else {
+            else 
+            {
                 std::cout << std::string(depth, '\t') << w << '-' << t;
                 if (t == st[w])
                     std::cout << " parent\n";
@@ -29,6 +30,7 @@ class DFS: public SEARCH<Graph> {
                 else
                     std::cout << " down\n";
             }
+        }
         depth--;
     }
 
