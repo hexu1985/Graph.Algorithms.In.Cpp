@@ -1,5 +1,5 @@
-#ifndef GRAPH_ALGO_STACK_HPP
-#define GRAPH_ALGO_STACK_HPP
+#ifndef GRAPH_ALGO_QUEUE_HPP
+#define GRAPH_ALGO_QUEUE_HPP
 
 #include <deque>
 #include <stdexcept>
@@ -7,28 +7,28 @@
 namespace graph_algo {
 
 template <class Item>
-class STACK {
+class QUEUE {
 private:
 	std::deque<Item> c;
 
 public:
-	int empty() const
+    int empty()
 	{
 		return c.empty();
 	}
 
-	void push(Item item)
-	{
+    void put(Item item)
+    {
 		c.push_back(item);
-	}
+    }
 
-	Item pop()
+    Item get()
 	{
 		if (c.empty()) {
-			throw std::underflow_error("STACK empty when pop");
+			throw std::underflow_error("QUEUE empty when get");
 		}
-		Item elem(c.back());
-		c.pop_back();
+		Item elem(c.front());
+		c.pop_front();
 		return elem;
 	}
 };
