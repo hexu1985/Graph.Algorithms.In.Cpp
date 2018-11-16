@@ -31,6 +31,14 @@ public:
 		c.pop_back();
 		return elem;
 	}
+
+	Item &peek()
+	{
+		if (c.empty()) {
+			throw std::underflow_error("STACK empty when pop");
+		}
+		return c.back();
+	}
 };
 
 }	// namespace
