@@ -12,16 +12,17 @@ class BFS: public SEARCH<Graph> {
 
     void searchC(Edge e)
     { 
-        QUEUE<Edge> Q;
-        Q.put(e); this->ord[e.w] = this->cnt++; 
+        QUEUE<Edge> Q;  
+        Q.put(e);
         while (!Q.empty())
-        {
-            e = Q.get(); st[e.w] = e.v;        
-            typename Graph::adjIterator A(this->G, e.w);
-            for (int t = A.beg(); !A.end(); t = A.nxt()) 
-                if (this->ord[t] == -1) 
-                { Q.put(Edge(e.w, t)); this->ord[t] = this->cnt++; }
-        }
+            if (this->ord[(e = Q.get()).w] == -1) 
+            { 
+                int v = e.v, w = e.w;
+                this->ord[w] = this->cnt++; st[w] = v;        
+                typename Graph::adjIterator A(this->G, w);
+                for (int t = A.beg(); !A.end(); t = A.nxt()) 
+                    if (this->ord[t] == -1) Q.put(Edge(w, t));
+            }
     }
 
 public:

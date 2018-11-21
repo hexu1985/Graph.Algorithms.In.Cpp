@@ -13,7 +13,11 @@
 
 #include "IO.hpp"
 #include "JsonFileIO.hpp"
+#ifdef USE_BFS_ORIGIN
+#include "BFS_origin.hpp"
+#else
 #include "BFS.hpp"
+#endif
 #include "get_st.hpp"
 #include "get_ord.hpp"
 
@@ -28,19 +32,19 @@ using GRAPH = SparseMultiGRAPH;
 
 int main(int argc, char *argv[])
 { 
-	if (argc != 2) {
-		cout << "usage: " << argv[0] << " filepath" << endl;
-		exit(1);
-	}
+    if (argc != 2) {
+        cout << "usage: " << argv[0] << " filepath" << endl;
+        exit(1);
+    }
 
-	auto G = JsonFileIO<GRAPH>::loadEZ(argv[1]);
-	cout << "============== graph show ==============\n";
-	IO<GRAPH>::show(*G);
-	cout << endl;
+    auto G = JsonFileIO<GRAPH>::loadEZ(argv[1]);
+    cout << "============== graph show ==============\n";
+    IO<GRAPH>::show(*G);
+    cout << endl;
 
-	cout << "total edges: " << G->E() << endl;
+    cout << "total edges: " << G->E() << endl;
 
-	cout << "\nDepth-first search test\n";
+    cout << "\nDepth-first search test\n";
     BFS<GRAPH> bfs(*G);
 
     cout << "    |";
@@ -64,6 +68,6 @@ int main(int argc, char *argv[])
     cout << '\n';
 
     cout << endl;
-	return 0;
+    return 0;
 }
 

@@ -12,7 +12,11 @@
 
 #include "IO.hpp"
 #include "JsonFileIO.hpp"
+#ifdef USE_CDFS_ITERATE
+#include "cDFS_iterate.hpp"
+#else
 #include "cDFS.hpp"
+#endif
 #include "get_ord.hpp"
 #include "inverseMap.hpp"
 

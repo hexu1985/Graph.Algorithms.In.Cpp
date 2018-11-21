@@ -16,11 +16,10 @@ private:
 
     void searchC(int v)
     { 
-        ord[v] = cnt++;
-
         typedef AdjIterator<Graph> adjIterator; 
         STACK<adjIterator> S;
         S.push(adjIterator(G, v));
+        ord[v] = cnt++;
 
         while (!S.empty()) {
             adjIterator &A = S.peek();
@@ -28,8 +27,8 @@ private:
             while (A.hasNext()) {
                 int t = A.next();
                 if (ord[t] == -1) {
-                    ord[t] = cnt++;
                     S.push(adjIterator(G, t));
+                    ord[t] = cnt++;
                     has_new_pushed = true;
                     break;
                 }

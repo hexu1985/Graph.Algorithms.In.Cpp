@@ -16,15 +16,15 @@ private:
     void searchC(int v)
     { 
         QUEUE<int> Q;  
-        Q.put(v); ord[v] = cnt++;
+        Q.put(v);
 		while (!Q.empty()) 
-        {
-            v = Q.get();
-            typename Graph::adjIterator A(G, v);
-            for (int t = A.beg(); !A.end(); t = A.nxt())
-                if (ord[t] == -1) 
-                { Q.put(t); ord[t] = cnt++; }
-        }
+			if (ord[v= Q.get()] == -1)
+			{
+				ord[v] = cnt++;
+				typename Graph::adjIterator A(G, v);
+				for (int t = A.beg(); !A.end(); t = A.nxt())
+					if (ord[t] == -1) Q.put(t);
+			}
     }
 
 public:
