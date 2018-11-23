@@ -2,9 +2,8 @@
 #define GRAPH_ALGO_CDFS_HPP
 
 #include <vector>
-#include <memory>
 #include "STACK.hpp"
-#include "QUEUE.hpp"
+#include "AdjIterator.hpp"
 
 namespace graph_algo {
 
@@ -15,29 +14,20 @@ private:
     int cnt = 0;
     std::vector<int> ord; 
 
-    std::shared_ptr<QUEUE<int>> make_adj_queue(int v)
-    {
-        auto Q = std::make_shared<QUEUE<int>>();
-        typename Graph::adjIterator A(G, v);
-        for (int t = A.beg(); !A.end(); t = A.nxt())
-            if (ord[t] == -1) 
-                Q->put(t);
-        return Q;
-    }
-
     void searchC(int v)
     { 
-        STACK<std::shared_ptr<QUEUE<int>>> S;
-        S.push(make_adj_queue(v));
+        typedef AdjIterator<Graph> adjIterator; 
+        STACK<adjIterator> S;
+        S.push(adjIterator(G, v));
         ord[v] = cnt++;
 
         while (!S.empty()) {
-            auto Q = S.peek();
+            adjIterator &A = S.peek();
             bool has_new_pushed = false;
-            while (!Q->empty()) {
-                int t = Q->get();
+            while (A.hasNext()) {
+                int t = A.next();
                 if (ord[t] == -1) {
-                    S.push(make_adj_queue(t));
+                    S.push(adjIterator(G, t));
                     ord[t] = cnt++;
                     has_new_pushed = true;
                     break;
