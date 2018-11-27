@@ -28,8 +28,8 @@ private:
     void searchC(int v)
     { 
         STACK<std::shared_ptr<QUEUE<int>>> S;
-        S.push(make_adj_queue(v));
         ord[v] = cnt++;
+        S.push(make_adj_queue(v));
 
         while (!S.empty()) {
             auto Q = S.peek();
@@ -37,8 +37,8 @@ private:
             while (!Q->empty()) {
                 int t = Q->get();
                 if (ord[t] == -1) {
-                    S.push(make_adj_queue(t));
                     ord[t] = cnt++;
+                    S.push(make_adj_queue(t));
                     has_new_pushed = true;
                     break;
                 }
