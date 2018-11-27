@@ -13,7 +13,15 @@
 
 #include "IO.hpp"
 #include "JsonFileIO.hpp"
+
+#ifdef USE_DFS_TRACE
+#include "DFS_trace.hpp"
+#elif defined USE_DFS_ITERATE
+#include "DFS_iterate.hpp"
+#else
 #include "DFS.hpp"
+#endif
+
 #include "get_st.hpp"
 #include "get_ord.hpp"
 
