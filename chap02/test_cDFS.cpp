@@ -14,8 +14,8 @@
 #include "JsonFileIO.hpp"
 #ifdef USE_CDFS_ITERATE
 #include "cDFS_iterate.hpp"
-#elif defined USE_CDFS_ITERATE2
-#include "cDFS_iterate2.hpp"
+#elif defined USE_CDFS_ITERATE_ORIGIN
+#include "cDFS_iterate_origin.hpp"
 #else
 #include "cDFS.hpp"
 #endif
