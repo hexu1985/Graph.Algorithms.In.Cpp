@@ -1,8 +1,8 @@
 
 RM = rm -f
 CXX = g++
-CXXFLAGS = -Wall -g -std=c++11 #-DUSE_DENSE_GRAPH
-INCLUDES = -I../include
+CXXFLAGS = -Wall -g -std=c++11 #-DUSE_SPARSE_MAULTI_GRAPH_ORIGIN #-DUSE_DENSE_GRAPH
+INCLUDES = -I../include -I../test
 LDFLAGS =
 LDPATH =
 

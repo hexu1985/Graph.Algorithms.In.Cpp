@@ -4,12 +4,7 @@
 #include <algorithm>
 #include <iterator>
 
-#ifdef USE_DENSE_GRAPH
-#include "DenseGRAPH.hpp"
-#else
-#include "SparseMultiGRAPH.hpp"
-#endif
-
+#include "GRAPH.hpp"
 #include "IO.hpp"
 #include "JsonFileIO.hpp"
 #ifdef USE_CDFS_ITERATE
@@ -24,12 +19,6 @@
 
 using namespace std;
 using namespace graph_algo;
-
-#ifdef USE_DENSE_GRAPH
-using GRAPH = DenseGRAPH;
-#else
-using GRAPH = SparseMultiGRAPH;
-#endif
 
 int main(int argc, char *argv[])
 { 

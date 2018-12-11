@@ -2,7 +2,7 @@
 RM = rm -f
 CXX = g++
 CXXFLAGS = -Wall -g -std=c++11 #-DUSE_DENSE_GRAPH
-INCLUDES = -I../include
+INCLUDES = -I../include -I../test
 LDFLAGS = -lgraph_algo
 LDPATH = -L../src -L../lib
 

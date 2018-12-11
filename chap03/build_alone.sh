@@ -18,4 +18,4 @@ make
 
 cd $this_sh_path
 cp *.sh build/
-cp *.json build/
+cp *.data build/
