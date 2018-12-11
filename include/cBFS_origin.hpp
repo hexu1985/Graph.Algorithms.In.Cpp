@@ -1,5 +1,5 @@
-#ifndef GRAPH_ALGO_CBFS_HPP
-#define GRAPH_ALGO_CBFS_HPP
+#ifndef GRAPH_ALGO_CBFS_ORIGIN_HPP
+#define GRAPH_ALGO_CBFS_ORIGIN_HPP
 
 #include <vector>
 #include "QUEUE.hpp"

@@ -2,91 +2,27 @@
 #define GRAPH_ALGO_SPARSEMULTIGRAPH_HPP
 
 #include <vector>
+#include <forward_list>
+#include <algorithm>
 #include "Edge.hpp"
 
 namespace graph_algo {
 
 class SparseMultiGRAPH { 
 private:
-	struct node { 
-		int v; node *next;
-		node(int x, node *t) { v = x; next = t; }
-	};
-
-	typedef node *link;
-
-	std::vector<link> adj;
+	std::vector< std::forward_list<int> > adj;
 	int Vcnt, Ecnt; 
 	bool digraph;
 
-private:
-	static link clone_from_list(link x)
-	{
-		link head = nullptr;
-		link tail = nullptr;
-		for ( ; x != nullptr; x = x->next) {
-			link y = new node(x->v, nullptr);
-			if (head == nullptr)	// list is empty
-				head = y;
-			else 		// insert to tail
-				tail->next = y;
-			tail = y;
-		}
-		return head;
-	}
-
-	static link remove_from_list(link &head, int v)
-	{
-		if (head == nullptr)	// list is empty
-			return nullptr;
-
-		link x = head;
-		if (x->v == v) {	// found at head
-			head = x->next;
-			return x;
-		}
-
-		link y = x;
-		for (x = x->next; x != nullptr && x->v != v; x = x->next, y = y->next)	// traverse list
-			;
-		if (x == nullptr) return nullptr;	// nofound
-		y->next = x->next;
-		return x;
-	}
-
-	static link find_from_list(link head, int v)
-	{
-		link x = nullptr;
-		for (x = head; x != nullptr && x->v != v; x = x->next)
-			;
-		return x;
-	}
+    static bool found_in_list(const std::forward_list<int> &lst, int v)
+    {
+        return std::find(lst.begin(), lst.end(), v) != lst.end();
+    }
 
 public:
 	SparseMultiGRAPH(int V, bool digraph = false) :
 		adj(V), Vcnt(V), Ecnt(0), digraph(digraph) 
 	{ 
-		adj.assign(V, 0); 
-	}
-
-	SparseMultiGRAPH(const SparseMultiGRAPH &G) :
-		adj(G.Vcnt), Vcnt(G.Vcnt), Ecnt(G.Ecnt), digraph(G.digraph)
-	{
-		for (size_t i = 0; i < adj.size(); i++) {
-			adj[i] = clone_from_list(G.adj[i]);
-		}
-	}
-
-	~SparseMultiGRAPH()
-	{
-		link y;
-		for (link x: adj) {
-			while (x != nullptr) {
-				y = x->next;
-				delete x;
-				x = y;
-			}
-		}
 	}
 
 	int V() const { return Vcnt; }
@@ -96,31 +32,26 @@ public:
 	void insert(Edge e)
 	{ 
 		int v = e.v, w = e.w;
-		adj[v] = new node(w, adj[v]);
-		if (!digraph) adj[w] = new node(v, adj[w]); 
+		adj[v].push_front(w);
+		if (!digraph) adj[w].push_front(v);
 		Ecnt++;
 	} 
 
 	void remove(Edge e)
 	{ 
 		int v = e.v, w = e.w;
-		link x = remove_from_list(adj[v], w);
-		if (x == nullptr)
-			return;
-		delete x;
+        if (!found_in_list(adj[v], w))
+            return;
+        adj[v].remove(w);
 		Ecnt--;
 
 		if (digraph) return; 
-		x = remove_from_list(adj[w], v);
-		if (x == nullptr)
-			return;
-		delete x;
+        adj[w].remove(v);
 	} 
 
 	bool edge(int v, int w) const
 	{
-		link x = find_from_list(adj[v], w);
-		return (x != nullptr);
+        return found_in_list(adj[v], w);
 	}
 
 	class adjIterator;
@@ -131,15 +62,15 @@ class SparseMultiGRAPH::adjIterator {
 private:
 	const SparseMultiGRAPH &G;
 	int v;
-	link t;
+    std::forward_list<int>::const_iterator iter;
 
 public:
 	adjIterator(const SparseMultiGRAPH &G, int v) : 
-		G(G), v(v) { t = 0; }
+		G(G), v(v) { }
 
-	int beg() { t = G.adj[v]; return t ? t->v : -1; }
-	int nxt() { if (t) t = t->next; return t ? t->v : -1; }
-	bool end() { return t == 0; }
+	int beg() { iter = G.adj[v].begin(); return iter != G.adj[v].end() ? *iter : -1; }
+	int nxt() { if (iter != G.adj[v].end()) ++iter; return iter != G.adj[v].end() ? *iter : -1; }
+	bool end() { return iter == G.adj[v].end(); }
 };
 
 }	// namespace

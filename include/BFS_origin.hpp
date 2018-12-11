@@ -1,5 +1,5 @@
-#ifndef GRAPH_ALGO_BFS_HPP
-#define GRAPH_ALGO_BFS_HPP
+#ifndef GRAPH_ALGO_BFS_ORIGIN_HPP
+#define GRAPH_ALGO_BFS_ORIGIN_HPP
 
 #include "SEARCH.hpp"
 #include "QUEUE.hpp"
