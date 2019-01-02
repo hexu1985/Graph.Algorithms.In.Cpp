@@ -1,4 +1,4 @@
-SUBDIRS = src samples samples2
+SUBDIRS = src chap01 chap01_2 chap02 chap03
 
 .PHONY: all everything debug clean
 

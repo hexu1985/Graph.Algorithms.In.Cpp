@@ -14,7 +14,7 @@ rm -rf ./lib
 rm -rf ./install
 mkdir build
 cd build
-cmake ..
+cmake -G"Unix Makefiles" ..
 make
 #make install
 
