@@ -95,6 +95,8 @@ public:
 
 	void insert(Edge e)
 	{ 
+		if (edge(e.v, e.w)) return;
+
 		int v = e.v, w = e.w;
 		adj[v] = new node(w, adj[v]);
 		if (!digraph) adj[w] = new node(v, adj[w]); 

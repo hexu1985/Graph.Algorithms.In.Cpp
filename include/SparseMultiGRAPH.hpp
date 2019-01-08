@@ -31,6 +31,8 @@ public:
 
 	void insert(Edge e)
 	{ 
+		if (edge(e.v, e.w)) return;
+
 		int v = e.v, w = e.w;
 		adj[v].push_front(w);
 		if (!digraph) adj[w].push_front(v);
