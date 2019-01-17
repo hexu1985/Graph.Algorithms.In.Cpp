@@ -12,7 +12,8 @@ this_sh_path=$PWD
 rm -rf ./build
 mkdir build
 cd build
-cmake -Dcompile_alone_flag=ON ..
+cmake -Dcompile_alone_flag=ON -G"Unix Makefiles" ..
+#cmake -Dcompile_alone_flag=ON ..
 make
 #make install
 

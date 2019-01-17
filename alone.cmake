@@ -6,6 +6,7 @@ if(compile_alone_flag)
 
 	include_directories(
 		${CMAKE_CURRENT_SOURCE_DIR}/../include
+		${CMAKE_CURRENT_SOURCE_DIR}/../include/helper
 		${CMAKE_CURRENT_SOURCE_DIR}/../include/json11
 		${CMAKE_CURRENT_SOURCE_DIR}/../test
 		)

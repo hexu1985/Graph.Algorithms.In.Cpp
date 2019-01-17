@@ -1,5 +1,6 @@
 *.a
 *.o
+*.exe
 build/
 cscope.out
 tags

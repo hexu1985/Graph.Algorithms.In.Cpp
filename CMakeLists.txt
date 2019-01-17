@@ -4,6 +4,7 @@ INCLUDE(${PROJECT_SOURCE_DIR}/common.cmake)
 
 include_directories(
 	${PROJECT_SOURCE_DIR}/include
+	${PROJECT_SOURCE_DIR}/include/helper
 	${PROJECT_SOURCE_DIR}/test
 )
 
