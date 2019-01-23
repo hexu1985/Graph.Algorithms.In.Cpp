@@ -8,8 +8,8 @@ namespace graph_algo {
 template <class Graph> 
 class TC { 
 private:
-    Graph T; 
     const Graph &G;
+    Graph T;
 
     void tcR(int v, int w)
     { 

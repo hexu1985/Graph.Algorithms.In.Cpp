@@ -20,7 +20,7 @@ private:
     }
 
 public:
-    dagTS(const Dag &D) : D(D), tcnt(0), cnt(0),
+    dagTS(const Dag &D) : D(D), cnt(0), tcnt(0),
         pre(D.V(), -1), post(D.V(), -1), postI(D.V(), -1)
     { 
         for (int v = 0; v < D.V(); v++)

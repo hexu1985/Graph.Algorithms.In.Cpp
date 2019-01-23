@@ -4,7 +4,7 @@
 #include "GRAPH.hpp"
 #include "IO.hpp"
 #include "JsonFileIO.hpp"
-#include "TC_DFS.hpp"
+#include "dagTC.hpp"
 
 using namespace std;
 using namespace graph_algo;
@@ -23,10 +23,10 @@ int main(int argc, char *argv[])
 
 	cout << "total edges: " << G->E() << endl;
 
-	cout << "\nTransitive Closure with DFS algorithm test\n";
-    TC<GRAPH> tc(*G);
+	cout << "\nDAG Transitive Closure with DFS algorithm test\n";
+    dagTC<GRAPH, GRAPH> tc(*G);
 
-	cout << "============== TC graph show ==============\n";
+	cout << "============== dagTC graph show ==============\n";
     IO<GRAPH>::showAdjMatrix(get_Graph_TC(tc));
 	cout << endl;
 
