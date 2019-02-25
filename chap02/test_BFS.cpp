@@ -8,8 +8,8 @@
 #include "GRAPH.hpp"
 #include "IO.hpp"
 #include "JsonFileIO.hpp"
-#ifdef USE_BFS_OPTIMIZED
-#include "BFS_optimized.hpp"
+#ifdef USE_BFS_IMPROVED
+#include "BFS_improved.hpp"
 #else
 #include "BFS.hpp"
 #endif

@@ -7,6 +7,7 @@
 namespace graph_algo {
 
 // Breadth First Search
+// prog18.9
 template <class Graph> 
 class BFS: public SEARCH<Graph> { 
     std::vector<int> st;
