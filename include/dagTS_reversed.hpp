@@ -3,6 +3,8 @@
 
 namespace graph_algo {
 
+// Reverse topological sort
+// prog19.6
 template <class Dag> 
 class dagTS { 
 private:

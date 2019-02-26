@@ -5,6 +5,8 @@
 
 namespace graph_algo {
 
+// Two-colorability (bipartiteness)
+// prog18.6
 template <class Graph> class BI { 
     const Graph &G;
     bool OK;

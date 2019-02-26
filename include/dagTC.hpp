@@ -6,6 +6,8 @@
 
 namespace graph_algo {
 
+// Transitive closure of a DAG
+// prog19.9
 template <class tcDag, class Dag> 
 class dagTC { 
 private:

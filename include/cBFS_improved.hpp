@@ -1,5 +1,5 @@
-#ifndef GRAPH_ALGO_CBFS_ORIGIN_HPP
-#define GRAPH_ALGO_CBFS_ORIGIN_HPP
+#ifndef GRAPH_ALGO_CBFS_HPP
+#define GRAPH_ALGO_CBFS_HPP
 
 #include <vector>
 #include "QUEUE.hpp"
@@ -16,15 +16,15 @@ private:
     void searchC(int v)
     { 
         QUEUE<int> Q;  
-        Q.put(v);
+        Q.put(v); ord[v] = cnt++;
 		while (!Q.empty()) 
-			if (ord[v= Q.get()] == -1)
-			{
-				ord[v] = cnt++;
-				typename Graph::adjIterator A(G, v);
-				for (int t = A.beg(); !A.end(); t = A.nxt())
-					if (ord[t] == -1) Q.put(t);
-			}
+        {
+            v = Q.get();
+            typename Graph::adjIterator A(G, v);
+            for (int t = A.beg(); !A.end(); t = A.nxt())
+                if (ord[t] == -1) 
+                { Q.put(t); ord[t] = cnt++; }
+        }
     }
 
 public:

@@ -5,6 +5,8 @@
 
 namespace graph_algo {
 
+// DFS-based transitive closure
+// prog19.4
 template <class Graph> 
 class TC { 
 private:

@@ -6,6 +6,8 @@
 
 namespace graph_algo {
 
+// DFS of a digraph
+// prog19.2
 template <class Graph> 
 class DFS { 
     const Graph &G;

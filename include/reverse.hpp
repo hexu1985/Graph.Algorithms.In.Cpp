@@ -3,6 +3,8 @@
 
 namespace graph_algo {
 
+// Reversing a digraph
+// prog19.1
 template <class inGraph, class outGraph> 
 void reverse(const inGraph &G, outGraph &R)
 { 

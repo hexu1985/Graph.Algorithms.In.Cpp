@@ -6,6 +6,8 @@
 
 namespace graph_algo {
 
+// Graph search
+// prog18.2
 template <class Graph> 
 class SEARCH {
 protected:

@@ -5,6 +5,9 @@
 
 namespace graph_algo {
 
+// Graph connectivity
+// the number of connected components
+// prog18.4
 template <class Graph> 
 class CC { 
     const Graph &G;

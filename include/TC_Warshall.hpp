@@ -5,6 +5,9 @@
 
 namespace graph_algo {
 
+// Warshall’s algorithm
+// computes the transitive closure
+// prog19.3
 template <class tcGraph, class Graph> 
 class TC { 
     tcGraph T;

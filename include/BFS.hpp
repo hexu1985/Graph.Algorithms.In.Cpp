@@ -6,7 +6,7 @@
 
 namespace graph_algo {
 
-// Breadth First Search
+// Breadth-first search
 // prog18.8
 template <class Graph> 
 class BFS: public SEARCH<Graph> { 

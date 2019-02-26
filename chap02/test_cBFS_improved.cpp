@@ -1,3 +1,3 @@
 
-#define USE_CBFS_ORIGIN 1
+#define USE_CBFS_IMPROVED
 #include "test_cBFS.cpp"

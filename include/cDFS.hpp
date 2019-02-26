@@ -5,6 +5,8 @@
 
 namespace graph_algo {
 
+// Depth-first search of a connected component
+// prog18.1
 template <class Graph> 
 class cDFS { 
 private:

@@ -7,8 +7,8 @@
 #include "GRAPH.hpp"
 #include "IO.hpp"
 #include "JsonFileIO.hpp"
-#ifdef USE_CBFS_ORIGIN
-#include "cBFS_origin.hpp"
+#ifdef USE_CBFS_IMPROVED
+#include "cBFS_improved.hpp"
 #else
 #include "cBFS.hpp"
 #endif

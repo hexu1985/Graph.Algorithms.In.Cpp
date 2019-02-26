@@ -5,6 +5,8 @@
 
 namespace graph_algo {
 
+// Topological sort
+// prog19.7
 template <class Dag> 
 class dagTS { 
 private:

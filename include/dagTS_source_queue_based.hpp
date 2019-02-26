@@ -5,6 +5,8 @@
 
 namespace graph_algo {
 
+// Source-queue–based topological sort
+// prog19.8
 template <class Dag> 
 class dagTS { 
 private:
