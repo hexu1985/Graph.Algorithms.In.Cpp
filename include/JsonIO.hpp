@@ -3,7 +3,9 @@
 
 #include <memory>
 #include <string>
-#include "json11/json11.hpp"
+#include <iostream>
+#include "nlohmann/json.hpp"
+
 #include "Edge.hpp"
 
 namespace graph_algo {
@@ -11,22 +13,25 @@ namespace graph_algo {
 template <class Graph> 
 class JsonIO {
 public:
-	static std::shared_ptr<Graph> loadEZ(const json11::Json &);
 	static std::shared_ptr<Graph> loadEZ(const std::string &);
+	static std::shared_ptr<Graph> loadEZ(std::istream &);
+
+private:
+	static std::shared_ptr<Graph> loadHelper(const nlohmann::json &);
 };
 
 template <class Graph> 
-std::shared_ptr<Graph> JsonIO<Graph>::loadEZ(const json11::Json &json)
+std::shared_ptr<Graph> JsonIO<Graph>::loadHelper(const nlohmann::json &json)
 {
-	int V = json["V"].int_value();
-	bool digraph = json["digraph"].bool_value();
+	int V = json["V"].get<int>();
+	bool digraph = json["digraph"].get<bool>();
 	auto G = std::make_shared<Graph>(V, digraph);
 
 	auto &edges = json["edges"];
 	int v, w;
-	for (auto &edge: edges.array_items()) {
-		v = edge[0].int_value();
-		w = edge[1].int_value();
+	for (auto &edge: edges) {
+		v = edge[0].get<int>();
+		w = edge[1].get<int>();
 		if (v < V && w < V)
 			G->insert(Edge(v, w));
 	}
@@ -36,13 +41,16 @@ std::shared_ptr<Graph> JsonIO<Graph>::loadEZ(const json11::Json &json)
 template <class Graph> 
 std::shared_ptr<Graph> JsonIO<Graph>::loadEZ(const std::string &str)
 {
-	std::string err;
-	const auto json = json11::Json::parse(str, err);
-	if (!err.empty()) {
-		throw std::runtime_error("JsonIO<Graph>::loadEZ(\""+str+"\") error: "+err);
-	}
+	const auto json = nlohmann::json::parse(str);
+	return loadHelper(json);
+}
 
-	return loadEZ(json);
+template <class Graph> 
+std::shared_ptr<Graph> JsonIO<Graph>::loadEZ(std::istream &in)
+{
+	nlohmann::json json;
+	in >> json;
+	return loadHelper(json);
 }
 
 }	// namespace 

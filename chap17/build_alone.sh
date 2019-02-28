@@ -20,3 +20,4 @@ make
 cd $this_sh_path
 cp *.sh build/
 cp *.data build/
+cp *.json build/

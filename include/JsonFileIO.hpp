@@ -20,10 +20,7 @@ std::shared_ptr<Graph> JsonFileIO<Graph>::loadEZ(const char *file_path)
 		throw std::runtime_error(std::string("JsonFileIO<Graph>::loadEZ file: \"")+file_path+"\" failed");
 	}
 
-	std::istreambuf_iterator<char>  beg(ifile), end;
-	std::string str(beg, end);
-
-	return JsonIO<Graph>::loadEZ(str);
+	return JsonIO<Graph>::loadEZ(ifile);
 }
 
 }	// namespace 

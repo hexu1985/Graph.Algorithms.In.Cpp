@@ -1,10 +1,10 @@
 
 RM = rm -f
 CXX = g++
-CXXFLAGS = -Wall -g -std=c++11 #-DUSE_SPARSE_MAULTI_GRAPH_ORIGIN #-DUSE_DENSE_GRAPH
-INCLUDES = -I../include -I../test
-LDFLAGS =
-LDPATH =
+CXXFLAGS = -Wall -g -std=c++11 #-DUSE_DENSE_GRAPH
+INCLUDES = -I../include -I../include/helper -I../test
+LDFLAGS = 
+LDPATH = 
 
 SOURCES = $(shell ls *.cpp)
 PROGS = $(SOURCES:%.cpp=%)

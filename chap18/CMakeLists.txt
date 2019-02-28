@@ -6,6 +6,5 @@ FOREACH (src_file ${src_files})
     STRING(REGEX MATCH "[^/]+$" src_basename ${src_file})
     STRING(REPLACE ".cpp" "" exe_file ${src_basename})
     ADD_EXECUTABLE(${exe_file} ${src_file})
-    TARGET_LINK_LIBRARIES(${exe_file} graph_algo)
 ENDFOREACH()
 

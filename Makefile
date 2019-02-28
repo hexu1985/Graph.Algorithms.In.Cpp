@@ -1,4 +1,4 @@
-SUBDIRS = src chap01 chap01_2 chap02 chap03
+SUBDIRS = chap17 chap18 chap19
 
 .PHONY: all everything debug clean
 
